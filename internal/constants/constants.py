@@ -11,4 +11,4 @@ STATUS_PATH: Final = "/status"
 
 # third-party APIs
 RESTCOUNTRIES_API_URL: Final = "http://129.241.150.113:8080/v3.1/"
-COUNTRIESNOW_API_URL: Final = "http://129.241.150.113:3500/api/v0.1"
+COUNTRIESNOW_API_URL: Final = "http://129.241.150.113:3500/api/v0.1/"
