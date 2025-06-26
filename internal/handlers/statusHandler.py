@@ -20,7 +20,8 @@ async def check_status(base_url: str) -> str:
     try: 
         async with httpx.AsyncClient() as client:
             resp = await client.head(status_url)
-            return str(resp.status_code)
+            if 200 <= resp.status_code <= 299:
+                return "Available"
     except httpx.RequestError as exc:
         return "Unavailable"
     
