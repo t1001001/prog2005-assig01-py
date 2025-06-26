@@ -20,13 +20,13 @@ async def check_status(base_url: str) -> str:
     try: 
         async with httpx.AsyncClient() as client:
             resp = await client.head(status_url)
-            if 200 <= resp.status_code <= 299:
+            if resp.status_code == 200:
                 return "Available"
     except httpx.RequestError as exc:
         return "Unavailable"
     
 # status handler to see the status of the API
-@router.get("/status")
+@router.get("/status", response_model = Status)
 async def status_handler():
 
     status = Status(
