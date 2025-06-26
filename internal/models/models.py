@@ -20,12 +20,10 @@ class Country(BaseModel):
     capital: List[str]
     cities: List[str]
 
-# used in Population class
 class PopulationValue(BaseModel):
-    mean: int
     year: int
+    value: int
 
-# population of a country
 class Population(BaseModel):
     country: str
     mean: int

@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException, Query
 import httpx
+from typing import Optional
 from internal.constants.constants import RESTCOUNTRIES_API_URL, COUNTRIESNOW_API_URL
 from internal.models.models import Country
 
@@ -12,7 +13,7 @@ def default_info_handler():
 
 # info handler to see information of a country based on its ISO2 code
 @router.get("/info/{iso_code}", response_model = Country)
-async def info_handler(iso_code: str, limit: int = Query(default = 10, description = "Limit number of cities")):
+async def info_handler(iso_code: str, limit: Optional[int] = Query(default = 10, description = "Limit number of cities")):
     if len(iso_code) != 2:
         raise HTTPException(status_code = 400, detail = "Invalid ISO2 code")
     
